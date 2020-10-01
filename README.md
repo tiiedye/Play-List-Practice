@@ -22,12 +22,17 @@ will be added prior to the currently playing song.
 The menu looks as follows:
 
 F - Play First Song
+
 N - Play Next song
+
 P - Play Previous song
+
 A - Add and play a new Song at current location
+
 L - List the current playlist
 
 ========================
+
 Enter a selection (Q to quit):
 
 And the available playlist is modeled as a std::list<Song>
