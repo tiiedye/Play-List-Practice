@@ -1,7 +1,7 @@
 ![made-with-VisualStudio](https://img.shields.io/badge/Made%20With-Visual%20Studio-ba88f3)  ![Using-CPlusPlus](https://img.shields.io/badge/Using-C%2B%2B-ff69b4)
 
 # playLIST Practice
-...
+A simple program that navigates through a list of songs (playlist) and prints them out on the console. Simulates a music player.
 
 <img src="./assets/screenshot.png"
      alt="Img"
