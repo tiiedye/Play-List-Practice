@@ -51,34 +51,57 @@ void display_menu() {
 }
 
 void play_current_song(const Song &song) {
-    // This function should display 
-    // Playing: followed by the song that is playing
-
-    std::cout << "You implement this function" << std::endl;
+    std::cout << "Currently Playing:" << std::endl;
+    std::cout << song << std::endl;
 }
 
 void display_playlist(const std::list<Song> &playlist, const Song &current_song) {
-    // This function should display the current playlist 
-    // and then the current song playing.
+    for (const Song &song : playlist) {
+        std::cout << song << std::endl;
+    }
+}
 
-    std::cout << "You implement this function" << std::endl;
+// list
+std::list<Song> playlist{
+        {"God's Plan",        "Drake",                     5},
+        {"Never Be The Same", "Camila Cabello",            5},
+        {"Pray For Me",       "The Weekend and K. Lamar",  4},
+        {"The Middle",        "Zedd, Maren Morris & Grey", 5},
+        {"Wait",              "Maroone 5",                 4},
+        {"Whatever It Takes", "Imagine Dragons",           3}
+};
+
+std::list<Song>::iterator current_song = playlist.begin();
+
+// functions for menu
+void first_song() {
+    std::cout << "Playing First Song" << std::endl;
+    current_song = playlist.begin();
+    play_current_song(*current_song);
+}
+
+void next_song() {
+    std::cout << "Playing Next Song" << std::endl;
 }
 
 int main() {
 
-    std::list<Song> playlist{
-            {"God's Plan",        "Drake",                     5},
-            {"Never Be The Same", "Camila Cabello",            5},
-            {"Pray For Me",       "The Weekend and K. Lamar",  4},
-            {"The Middle",        "Zedd, Maren Morris & Grey", 5},
-            {"Wait",              "Maroone 5",                 4},
-            {"Whatever It Takes", "Imagine Dragons",           3}
-    };
+    char selection{};
 
-    std::list<Song>::iterator current_song = playlist.begin();
+    do {
+        display_menu();
 
-    std::cout << "To be implemented" << std::endl;
-    // Your program logic goes here
+        std::cin >> selection;
+        selection = std::toupper(selection);
+
+        switch (selection) {
+            case 'F':
+                first_song();
+                break;
+            case 'N':
+
+        }
+    } while (selection != 'Q')
 
     std::cout << "Thanks for listening!" << std::endl;
     return 0;
