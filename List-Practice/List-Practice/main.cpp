@@ -82,6 +82,50 @@ void first_song() {
 
 void next_song() {
     std::cout << "Playing Next Song" << std::endl;
+    current_song++;
+    if (current_song == playlist.end()) {
+        std::cout << "Restarting playlist" << std::endl;
+        current_song = playlist.begin();
+    }
+    play_current_song(*current_song);
+}
+
+void previous_song() {
+    std::cout << "Playing Previous Song" << std::endl;
+    if (current_song == playlist.begin()) {
+        std::cout << "Wrapping to end of playlist." << std::endl;
+        current_song = playlist.end();
+    }
+    current_song--;
+    play_current_song(*current_song);
+}
+
+void add_song() {
+    std::string name, artist;
+    int rating;
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::cout << "Adding and Playing new Song" << std::endl;
+
+    std::cout << "Enter Song Name: ";
+    std::cin >> name;
+
+    std::cout << "Enter Artist/Band Name: ";
+    std::cin >> artist;
+
+    std::cout << "Enter your Song Rating (1-5): ";
+    std::cin >> rating;
+
+    playlist.insert(current_song, Song{name, artist, rating});
+    std::cout << std::endl;
+    current_song--;
+    play_current_song(*current_song);
+}
+
+void view_list() {
+    std::cout << std::endl;
+    display_playlist(playlist, *current_song);
 }
 
 int main() {
@@ -93,16 +137,32 @@ int main() {
 
         std::cin >> selection;
         selection = std::toupper(selection);
+        std::cout << std::endl;
 
         switch (selection) {
             case 'F':
                 first_song();
                 break;
             case 'N':
-
+                next_song();
+                break;
+            case 'P':
+                previous_song();
+                break;
+            case 'A':
+                add_song();
+                break;
+            case 'L':
+                view_list();
+                break;
+            case 'Q':
+                std::cout << "Godbye! Thanks for listening!!" << std::endl;
+                break;
+            default:
+                std::cout << "Invalid Option" << std::endl;
+                break;
         }
-    } while (selection != 'Q')
+    } while (selection != 'Q');
 
-    std::cout << "Thanks for listening!" << std::endl;
     return 0;
 }
