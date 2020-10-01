@@ -26,6 +26,7 @@ N - Play Next song
 P - Play Previous song
 A - Add and play a new Song at current location
 L - List the current playlist
+
 ========================
 Enter a selection (Q to quit):
 
